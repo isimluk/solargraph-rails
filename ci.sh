@@ -25,10 +25,13 @@ gem install bundler
 
 echo "s/gem 'solargraph'/gem 'solargraph', '${MATRIX_SOLARGRAPH_VERSION}'/" > command.sed
 
-(cd spec/rails5; sed -i -f ../../command.sed Gemfile; cat Gemfile; bundle install; yard gems)
-(cd spec/rails6; sed -i -f ../../command.sed Gemfile; cat Gemfile; bundle install; yard gems)
-(cd spec/rails7; sed -i -f ../../command.sed Gemfile; cat Gemfile; bundle install; yard gems)
+(cd spec/rails5; sed -i -f ../../command.sed Gemfile; cat Gemfile; bundle install; bundle exec yard gems)
+(cd spec/rails6; sed -i -f ../../command.sed Gemfile; cat Gemfile; bundle install; bundle exec yard gems)
+(cd spec/rails7; sed -i -f ../../command.sed Gemfile; cat Gemfile; bundle install; bundle exec yard gems)
 
 bundle install
+
+bundle exec rspec ./spec/solargraph-rails/model_spec.rb
+bundle exec rspec ./spec/solargraph-rails/rails7_spec.rb
 
 bundle exec rspec
