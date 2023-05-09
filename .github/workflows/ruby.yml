@@ -14,8 +14,7 @@ on:
 
 jobs:
   test:
-    # older versions of Ruby want openssl1 which is not on ubuntu-latest
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         ruby-version:
