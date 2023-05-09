@@ -26,16 +26,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Cache RVM
-        uses: actions/cache@v3
-        id: rvm
-        with:
-          key: ${{ runner.os }}-rvm-${{ matrix.ruby-version }}
-          path: |
-            /home/runner/.rvm
-            /home/runner/.yardoc
-            #/usr/local/rvm/
-      #- name: Setup upterm session
-      #  uses: lhotari/action-upterm@v1
       - name: Test
         run: "/bin/bash ./ci.sh ${{ matrix.ruby-version }} ${{ matrix.solargraph-version}}"
